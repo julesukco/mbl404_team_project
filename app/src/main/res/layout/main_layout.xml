@@ -36,7 +36,7 @@
         android:layout_below="@+id/txtNameLabel"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/btnNameSearch"
-        android:text="St. Judy&apos;s Clinic"
+        android:text="The New Clinic"
         android:gravity="center" />
 
     <Button

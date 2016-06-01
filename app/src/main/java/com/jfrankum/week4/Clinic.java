@@ -7,6 +7,7 @@ public class Clinic {
     private String address;
     private String city;
     private String state;
+    private String zip;
     private String position;
     private String name;
     private String phone;
@@ -18,7 +19,7 @@ public class Clinic {
     public Clinic() {
     }
 
-    public Clinic(long id, String title, String address, String city, String state,
+    public Clinic(long id, String title, String address, String city, String state, String zip,
                   String position, String name, String phone, String website,
                   String status, String lat, String lon) {
         this.id = id;
@@ -26,6 +27,7 @@ public class Clinic {
         this.address = address;
         this.city = city;
         this.state = state;
+        this.zip = zip;
         this.position = position;
         this.name = name;
         this.phone = phone;
@@ -75,6 +77,13 @@ public class Clinic {
         this.state = state;
     }
 
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
     public String getPosition() {
         return position;
     }

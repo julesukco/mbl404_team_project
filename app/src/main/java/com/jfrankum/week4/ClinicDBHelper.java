@@ -1,15 +1,12 @@
 package com.jfrankum.week4;
 
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.BaseColumns;
 
 import java.util.ArrayList;
-
 
 public class ClinicDBHelper extends SQLiteOpenHelper {
 
@@ -19,6 +16,7 @@ public class ClinicDBHelper extends SQLiteOpenHelper {
     private static final String COLUMN_ADDRESS = "address";
     private static final String COLUMN_CITY = "city";
     private static final String COLUMN_STATE = "state";
+    private static final String COLUMN_ZIP = "zip";
     private static final String COLUMN_CONTACT_POS = "position";
     private static final String COLUMN_CONTACT_NAME = "name";
     private static final String COLUMN_PHONE = "phone";
@@ -39,13 +37,14 @@ public class ClinicDBHelper extends SQLiteOpenHelper {
                     COLUMN_ADDRESS + TEXT_TYPE + COMMA_SEP +
                     COLUMN_CITY + TEXT_TYPE + COMMA_SEP +
                     COLUMN_STATE + TEXT_TYPE + COMMA_SEP +
+                    COLUMN_ZIP + TEXT_TYPE + COMMA_SEP +
                     COLUMN_CONTACT_POS + TEXT_TYPE + COMMA_SEP +
                     COLUMN_CONTACT_NAME + TEXT_TYPE + COMMA_SEP +
                     COLUMN_PHONE + TEXT_TYPE + COMMA_SEP +
                     COLUMN_WEBSITE + TEXT_TYPE + COMMA_SEP +
                     COLUMN_STATUS + TEXT_TYPE + COMMA_SEP +
                     COLUMN_LAT + TEXT_TYPE + COMMA_SEP +
-                    COLUMN_LONG + TEXT_TYPE + COMMA_SEP +
+                    COLUMN_LONG + TEXT_TYPE +
                     " )";
 
     // TYPICAL DELETE
@@ -85,6 +84,7 @@ public class ClinicDBHelper extends SQLiteOpenHelper {
         values.put(COLUMN_ADDRESS, clinic.getAddress());
         values.put(COLUMN_CITY, clinic.getCity());
         values.put(COLUMN_STATE, clinic.getState());
+        values.put(COLUMN_ZIP, clinic.getZip());
         values.put(COLUMN_CONTACT_POS, clinic.getPosition());
         values.put(COLUMN_CONTACT_NAME, clinic.getName());
         values.put(COLUMN_PHONE, clinic.getPhone());
@@ -99,7 +99,50 @@ public class ClinicDBHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
-    public ArrayList<Clinic> getClinics() {
+    /**
+     * Retrieve all clinics that match to the name parameter
+     * @param queryParam
+     * @return
+     */
+    public ArrayList<Clinic> findClinicByName(String queryParam) {
+        String sqlQuery = "WHERE " + COLUMN_TITLE + " LIKE '%" + queryParam + "%'";
+        return getClinics(sqlQuery);
+    }
+
+    /**
+     * Retrieve all clinics that match to the name parameter
+     * @param queryParam
+     * @return
+     */
+    public ArrayList<Clinic> findClinicByZip(String queryParam) {
+        String sqlQuery = "WHERE " + COLUMN_ZIP + " LIKE '%" + queryParam + "%'";
+        return getClinics(sqlQuery);
+    }
+
+    /**
+     * Retrieve all clinics that match to the name parameter
+     * @param queryParam
+     * @return
+     */
+    public ArrayList<Clinic> findClinicByStatus(String queryParam) {
+        String sqlQuery = "WHERE " + COLUMN_STATUS + " LIKE '%" + queryParam + "%'";
+        return getClinics(sqlQuery);
+    }
+
+    /**
+     * Retrieve all clinics in the db
+     * @return
+     */
+    public ArrayList<Clinic> getAllClinics() {
+        return getClinics("");
+    }
+
+
+    /**
+     * Retrieve all clinics for a given, optional, where clause passed in
+     * @return
+     */
+    private ArrayList<Clinic> getClinics(String sqlQuery) {
 
         ArrayList<Clinic> clinicEntries = new ArrayList<Clinic>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -107,11 +150,11 @@ public class ClinicDBHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery("SELECT " + COLUMN_ID + ", " + COLUMN_TITLE + ", " +
                 COLUMN_ADDRESS + ", " + COLUMN_CITY + ", " +
-                COLUMN_STATE + ", " + COLUMN_CONTACT_POS + ", " +
+                COLUMN_STATE + ", " + COLUMN_ZIP + ", " + COLUMN_CONTACT_POS + ", " +
                 COLUMN_CONTACT_NAME + ", " + COLUMN_PHONE + ", " +
                 COLUMN_WEBSITE + ", " + COLUMN_STATUS + ", " +
                 COLUMN_LAT + ", " +
-                COLUMN_LONG + " FROM " + TABLE_NAME, new String[]{});
+                COLUMN_LONG + " FROM " + TABLE_NAME + " " + sqlQuery, new String[]{});
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -122,13 +165,14 @@ public class ClinicDBHelper extends SQLiteOpenHelper {
             clinic.setAddress(cursor.getString(2));
             clinic.setCity(cursor.getString(3));
             clinic.setState(cursor.getString(4));
-            clinic.setPosition(cursor.getString(5));
-            clinic.setName(cursor.getString(6));
-            clinic.setPhone(cursor.getString(7));
-            clinic.setWebsite(cursor.getString(8));
-            clinic.setStatus(cursor.getString(9));
-            clinic.setLat(cursor.getString(10));
-            clinic.setLon(cursor.getString(11));
+            clinic.setZip(cursor.getString(5));
+            clinic.setPosition(cursor.getString(6));
+            clinic.setName(cursor.getString(7));
+            clinic.setPhone(cursor.getString(8));
+            clinic.setWebsite(cursor.getString(9));
+            clinic.setStatus(cursor.getString(10));
+            clinic.setLat(cursor.getString(11));
+            clinic.setLon(cursor.getString(12));
 
             clinicEntries.add(clinic);
             cursor.moveToNext();
