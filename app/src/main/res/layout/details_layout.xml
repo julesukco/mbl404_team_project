@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Details">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Clinic Contact Details"
+        android:id="@+id/txtDetails"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="23dp"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:id="@+id/btnSaveContact"
+        android:layout_alignBottom="@+id/txtDetails"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtContactTitle"
+        android:layout_below="@+id/txtDetails"
+        android:layout_alignStart="@+id/txtDetails"
+        android:layout_toStartOf="@+id/txtContactsName"
+        android:text="Operations Mgr"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="John Doe"
+        android:ems="10"
+        android:id="@+id/txtContactsName"
+        android:layout_below="@+id/txtContactTitle"
+        android:layout_alignStart="@+id/txtDetails"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="(864)000-0000"
+        android:id="@+id/txtContactPhone"
+        android:layout_below="@+id/txtContactsName"
+        android:layout_alignStart="@+id/txtDetails"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Call Clinic"
+        android:id="@+id/btnCall"
+        android:layout_below="@+id/txtContactPhone"
+        android:layout_alignStart="@+id/txtDetails"
+        android:layout_alignEnd="@+id/txtContactsName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="http://www.somethingoranother.com"
+        android:id="@+id/txtContactWebsite"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/btnCall"
+        android:layout_alignStart="@+id/txtDetails" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Visit Website"
+        android:id="@+id/btnWebsite"
+        android:layout_below="@+id/txtContactWebsite"
+        android:layout_marginTop="15dp"
+        android:layout_alignStart="@+id/txtDetails"
+        android:layout_alignEnd="@+id/txtContactsName" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Map"
+        android:id="@+id/btnViewMap"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="50dp"
+        android:layout_alignStart="@+id/btnWebsite" />
+
+</RelativeLayout>
