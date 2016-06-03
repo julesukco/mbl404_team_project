@@ -37,16 +37,16 @@
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/btnNameSearch"
         android:text="Clinic"
-        android:gravity="center" />
+        android:layout_alignParentEnd="false" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Find by Name"
         android:id="@+id/btnNameSearch"
-        android:layout_alignTop="@+id/txtNameLabel"
         android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/btnZipSearch" />
+        android:layout_alignStart="@+id/btnZipSearch"
+        android:layout_below="@+id/txtNameLabel" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -66,16 +66,15 @@
         android:id="@+id/txtZip"
         android:layout_below="@+id/txtZipLabel"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/btnZipSearch"
-        android:gravity="center" />
+        android:layout_toStartOf="@+id/btnZipSearch" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Find by Location"
         android:id="@+id/btnZipSearch"
-        android:layout_alignTop="@+id/txtZipLabel"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/txtZipLabel" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -93,16 +92,15 @@
         android:id="@+id/txtStatus"
         android:layout_below="@+id/txtStatusLabel"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/btnStatusSearch"
-        android:gravity="center" />
+        android:layout_toStartOf="@+id/btnStatusSearch" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Find by Status"
         android:id="@+id/btnStatusSearch"
-        android:layout_alignTop="@+id/txtStatusLabel"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/txtStatusLabel" />
 
 
     <Button

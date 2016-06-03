@@ -8,20 +8,17 @@
         android:label="@string/app_label"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Main">
+        <activity android:name=".Main" />
+        <activity android:name=".Results" />
+        <activity android:name=".Details" />
+        <activity android:name=".Saved" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Results"></activity>
-
-        <activity android:name=".Details"></activity>
-
-        <activity android:name=".Saved"></activity>
-
     </application>
 
 </manifest>
