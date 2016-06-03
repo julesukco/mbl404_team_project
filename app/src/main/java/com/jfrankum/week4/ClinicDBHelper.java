@@ -61,6 +61,7 @@ public class ClinicDBHelper extends SQLiteOpenHelper {
 
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ENTRIES);
+
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -97,6 +98,23 @@ public class ClinicDBHelper extends SQLiteOpenHelper {
         long newRowId = db.insert(TABLE_NAME, null, values);
 
         return newRowId;
+    }
+
+    /**
+     * Retrieve the clinic that match to the id parameter
+     * @param queryParam
+     * @return
+     */
+    public Clinic findClinicById(long id) {
+        String sqlQuery = "WHERE " + COLUMN_ID + " = " + id + "";
+        ArrayList<Clinic> clinics = getClinics(sqlQuery);
+
+        // search by id should return a single row if found
+        if (clinics.size() == 1) {
+            return clinics.get(0);
+        } else {
+            return null;
+        }
     }
 
     /**

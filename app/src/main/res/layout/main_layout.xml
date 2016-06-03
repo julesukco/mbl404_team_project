@@ -36,7 +36,7 @@
         android:layout_below="@+id/txtNameLabel"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/btnNameSearch"
-        android:text="The New Clinic"
+        android:text="Clinic"
         android:gravity="center" />
 
     <Button
@@ -67,7 +67,6 @@
         android:layout_below="@+id/txtZipLabel"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/btnZipSearch"
-        android:text="12345"
         android:gravity="center" />
 
     <Button
@@ -95,7 +94,6 @@
         android:layout_below="@+id/txtStatusLabel"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/btnStatusSearch"
-        android:text="Open"
         android:gravity="center" />
 
     <Button

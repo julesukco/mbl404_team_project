@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -30,24 +33,20 @@ public class Results extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Search Type Not Passed", Toast.LENGTH_LONG).show();
             return;
         }
+        performSearch(extras, type);
 
-        // Search for the clinics based on the search parameter passed in
-        ClinicDBHelper clinicDBHelper = new ClinicDBHelper(getApplicationContext());
-        ArrayList<Clinic> clinics = new ArrayList<Clinic>();
-        switch (type) {
-            case "name":
-                clinics = clinicDBHelper.findClinicByName(extras.getString(type));
-                break;
-            case "zip":
-                clinics = clinicDBHelper.findClinicByZip(extras.getString(type));
-                break;
-            case "status":
-                clinics = clinicDBHelper.findClinicByStatus(extras.getString(type));
-                break;
-        }
+        ListView resultsList = (ListView) findViewById(R.id.listView);
 
-        Toast.makeText(getApplicationContext(), "Found " + clinics.size() + " clinics", Toast.LENGTH_LONG).show();
+        resultsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), Details.class);
 
+                TextView tvId = (TextView) view.findViewById(R.id.itemId);
+                intent.putExtra("id", tvId.getText().toString());
+                startActivity(intent);
+            }
+        });
 
         Button btnSaveSearch = (Button) findViewById(R.id.btnSaveSearch);
         btnSaveSearch.setOnClickListener(new View.OnClickListener() {
@@ -56,17 +55,13 @@ public class Results extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Search Saved", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
-        Button btnDetail = (Button) findViewById(R.id.btnDetail);
-        btnDetail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Details.class);
-                startActivity(intent);
-            }
-        });
+    private void performSearch(Bundle extras, String type) {
 
-
+        ListView resultsList = (ListView) findViewById(R.id.listView);
+        SearchTask searchTask = new SearchTask(getApplicationContext(), resultsList);
+        searchTask.execute(type, extras.getString(type));
     }
 
 }
