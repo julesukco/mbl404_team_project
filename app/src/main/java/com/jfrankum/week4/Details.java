@@ -59,7 +59,7 @@ public class Details extends AppCompatActivity {
                 TextView tvPhone = (TextView) findViewById(R.id.txtContactPhone);
 
                 // remove any dashes in the phone number as this breaks the dialer
-                callIntent.setData(Uri.parse("tel:" + tvPhone.getText().toString().replace("-","")));
+                callIntent.setData(Uri.parse("tel:" + tvPhone.getText().toString().replace("-", "")));
                 startActivity(callIntent);
 
             }
@@ -70,7 +70,20 @@ public class Details extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getApplicationContext(), "Website Opened", Toast.LENGTH_SHORT).show();
+                TextView tvWebSite = (TextView) findViewById(R.id.txtContactWebsite);
+                final String url = tvWebSite.getText().toString();
+
+                Runnable runnable = new Runnable() {
+                    public void run() {
+
+                        Uri uri = Uri.parse(url);
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
+
+                    }
+                };
+                Thread myThread = new Thread(runnable);
+                myThread.start();
 
             }
         });
@@ -87,8 +100,6 @@ public class Details extends AppCompatActivity {
     }
 
     public void asyncMap() {
-        Toast.makeText(getApplicationContext(), "View Map", Toast.LENGTH_SHORT).show();
-
         Runnable runnable = new Runnable() {
             public void run() {
 
@@ -98,10 +109,8 @@ public class Details extends AppCompatActivity {
 
             }
         };
-        Thread mythread = new Thread(runnable);
-        mythread.start();
-
-
+        Thread myThread = new Thread(runnable);
+        myThread.start();
     }
 
     private void showClinic(long id) {
