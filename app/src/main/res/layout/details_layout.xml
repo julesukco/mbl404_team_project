@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
     tools:context=".Details">
 
     <TextView
@@ -11,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="10dp"
         android:text="Clinic Contact Details"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold|italic" />
@@ -20,9 +22,10 @@
         android:id="@+id/btnSaveContact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/txtTitle"
+        android:text="Save Contact"
+        android:layout_above="@+id/txtContactWebsite"
         android:layout_alignParentEnd="true"
-        android:text="Save" />
+        android:layout_toEndOf="@+id/btnCall" />
 
     <TextView
         android:id="@+id/txtContactsName"
@@ -31,7 +34,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignStart="@+id/txtTitle"
         android:layout_below="@+id/txtTitle"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_toStartOf="@+id/txtTitle"
         android:text="Operations Mgr"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -59,10 +62,11 @@
         android:id="@+id/btnCall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/txtContactsName"
         android:layout_alignStart="@+id/txtTitle"
         android:layout_below="@+id/txtContactPhone"
-        android:text="Call Clinic" />
+        android:text="Call Clinic"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
 
     <TextView
         android:id="@+id/txtContactWebsite"
@@ -70,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/txtTitle"
         android:layout_below="@+id/btnCall"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:text="http://www.somethingoranother.com"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -81,8 +85,27 @@
         android:layout_alignEnd="@+id/txtContactsName"
         android:layout_alignStart="@+id/txtTitle"
         android:layout_below="@+id/txtContactWebsite"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:text="Visit Website" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="address_1"
+        android:id="@+id/txtAddr1"
+        android:layout_below="@+id/btnWebsite"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="address 2 "
+        android:id="@+id/txtAddr2"
+        android:layout_below="@+id/txtAddr1"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/btnViewMap"
@@ -91,7 +114,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignStart="@+id/btnWebsite"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="30dp"
         android:text="View Map" />
 
 </RelativeLayout>
