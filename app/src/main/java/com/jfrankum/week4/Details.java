@@ -13,7 +13,7 @@ public class Details extends AppCompatActivity {
 
     // Create variables for the static map
     public static String mapPartOne = "https://maps.googleapis.com/maps/api/staticmap?";
-    public static String mapKey = "";
+    public static String mapKey = "AIzaSyC7NT6hNKMT3WVRuL_fMC4LnKmuOhXHvAs";
     public String lat = "";
     public String lon = "";
 
@@ -102,8 +102,7 @@ public class Details extends AppCompatActivity {
     public void asyncMap() {
         Runnable runnable = new Runnable() {
             public void run() {
-
-                Uri uri = Uri.parse(mapPartOne + "center=" + lat + ", " + lon + "&zoom=14&size=600x300&maptype=roadmap&key=" + mapKey);
+                Uri uri = Uri.parse(mapPartOne + "center=" + lat + "," + lon + "&zoom=10&size=540x960&maptype=roadmap&key=" + mapKey);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
 
