@@ -32,7 +32,7 @@
         android:layout_alignStart="@+id/txtTitle"
         android:layout_below="@+id/txtTitle"
         android:layout_marginTop="40dp"
-        android:layout_toStartOf="@+id/txtContactsName"
+        android:layout_toStartOf="@+id/txtTitle"
         android:text="Operations Mgr"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 

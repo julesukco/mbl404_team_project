@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 public class Results extends AppCompatActivity {
 
+    private Search mSearch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +54,9 @@ public class Results extends AppCompatActivity {
         btnSaveSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Search Saved", Toast.LENGTH_SHORT).show();
+
+                FavoritesDBHelper favoritesDBHelper = new FavoritesDBHelper(getApplicationContext());
+                favoritesDBHelper.addSearchEntry(mSearch);
             }
         });
     }
@@ -62,6 +66,8 @@ public class Results extends AppCompatActivity {
         ListView resultsList = (ListView) findViewById(R.id.listView);
         SearchTask searchTask = new SearchTask(getApplicationContext(), resultsList);
         searchTask.execute(type, extras.getString(type));
+
+        mSearch = new Search (type, extras.getString(type));
     }
 
 }
