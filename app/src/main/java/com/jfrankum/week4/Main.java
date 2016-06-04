@@ -34,9 +34,9 @@ public class Main extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getApplicationContext(), Results.class);
-                intent.putExtra("type", "zip");
+                intent.putExtra("type", "location");
                 TextView tvZip = (TextView) findViewById(R.id.txtZip);
-                intent.putExtra("zip", tvZip.getText().toString());
+                intent.putExtra("location", tvZip.getText().toString());
                 startActivity(intent);
 
             }
@@ -61,7 +61,7 @@ public class Main extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(), Saved.class);
+                Intent intent = new Intent(getApplicationContext(), FavoritesActivity.class);
                 startActivity(intent);
 
             }

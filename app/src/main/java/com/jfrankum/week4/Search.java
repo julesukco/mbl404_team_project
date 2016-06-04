@@ -25,14 +25,14 @@ public class Search {
                 status = "";
                 break;
             case "location":
-                name = param;
-                location = "";
+                name = "";
+                location = param;
                 status = "";
                 break;
             case "status":
-                name = param;
+                name = "";
                 location = "";
-                status = "";
+                status = param;
         }
     }
 

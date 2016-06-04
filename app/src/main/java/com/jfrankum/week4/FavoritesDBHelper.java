@@ -81,7 +81,7 @@ public class FavoritesDBHelper extends SQLiteOpenHelper {
         Search search;
 
         Cursor cursor = db.rawQuery("SELECT " + SEARCH_ID + ", " + SEARCH_NAME + ", " +
-                SEARCH_LOCATION + ", " + SEARCH_STATUS + ", " +
+                SEARCH_LOCATION + ", " + SEARCH_STATUS +
                 " FROM " + TABLE_SEARCH, new String[]{});
 
         cursor.moveToFirst();

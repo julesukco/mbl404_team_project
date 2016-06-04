@@ -42,7 +42,7 @@ public class SearchTask extends AsyncTask<String, Void, ArrayList<Clinic>> {
             case "name":
                 clinics = clinicDBHelper.findClinicByName(params[1]);
                 break;
-            case "zip":
+            case "location":
                 clinics = clinicDBHelper.findClinicByZip(params[1]);
                 break;
             case "status":

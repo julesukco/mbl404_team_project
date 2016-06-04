@@ -54,7 +54,13 @@ public class Details extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getApplicationContext(), "Contact Called", Toast.LENGTH_SHORT).show();
+                // Invoke the call intent to call the phone number
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                TextView tvPhone = (TextView) findViewById(R.id.txtContactPhone);
+
+                // remove any dashes in the phone number as this breaks the dialer
+                callIntent.setData(Uri.parse("tel:" + tvPhone.getText().toString().replace("-","")));
+                startActivity(callIntent);
 
             }
         });
